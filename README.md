@@ -56,3 +56,6 @@ Pousser vers la branche (git push origin feature/NomDeLaFonctionnalité)
 Créer une nouvelle Pull Request
 Licence
 Ce projet est sous licence MIT.
+
+Pour votre une présentation de tout le travail effectué c'est à dire du contexte au résultat final en passant par la modélisation, l'architecture utilisé et le choix des technologies. Cliquez sur ce lien en dessous.
+https://www.canva.com/design/DAFR7AHYTv8/m_IkPuLMi8FmgO_XNIFulQ/edit?utm_content=DAFR7AHYTv8&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
