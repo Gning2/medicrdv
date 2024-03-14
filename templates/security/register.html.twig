@@ -1,0 +1,242 @@
+{% extends 'headerbefore.html.twig' %}
+
+{% block title %}Connexion
+{% endblock %}
+{% block stylesheets%}
+	<style>
+		body {
+			background-image: url({{asset('images/bg.jpg')}});
+			background-size: cover;
+			background-attachment: fixed;
+			min-height: 100%;
+		}
+		.wrapper .logo img {
+			max-width: 25%;
+		}
+		.wrapper input:focus {
+			box-shadow: none;
+			border-color: #1fab89;
+		}
+		.fontuser input,
+		select {
+			padding-left: 35px !important;
+		}
+		.wrapper select:focus {
+			box-shadow: none;
+			border-color: #1fab89;
+		}
+		.wrapper .submit_btn {
+			padding: 15px;
+			font-weight: 500;
+		}
+		.wrapper .submit_btn:focus {
+			box-shadow: none;
+		}
+		#container2 {
+			width: 65%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		label span {
+			color: red;
+			font-size: 18px;
+		}
+		#formm {
+			position: absolute;
+			margin-top: 80px;
+			width: 65%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.fontuser {
+			position: relative;
+		}
+		.fontuser i {
+			position: absolute;
+			left: 12px;
+			top: 38px;
+			color: gray;
+		}
+	</style>
+{% endblock %}
+{% block body %}
+	<section class="wrapper">
+		<div id="container2" class="col-sm-8  col-lg-9 col-xl-5">
+			<form method="post" action="{{ path('app_registers') }}" id="formm" class="rounded bg-white shadow py-5 px-5">
+				{% if app.user %}
+					<div class="mb-3">
+						You are logged in as
+						{{ app.user.userIdentifier }},
+						<a href="{{ path('app_logout') }}">Logout</a>
+					</div>
+				{% endif %}
+				<h3 class="text-dark fw-bolder fs-2 mb-2 text-center">Création de compte</h3>
+				<div class="fw-normal fs-18 text-muted mb-4 text-center">
+					Vous avez un compte?
+					<a href="{{path('app_login')}}" class="text-success fw-bold text-decoration-none">Connectez-vous</a>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="mb-3 fontuser">
+								<label for="inputprenom">Prenom
+									<span>*</span>
+								</label>
+								<i class="fa-solid fa-user"></i>
+								<input type="text" name="prenom" id="inputprenom" class="form-control" placeholder="Prenom" required>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="mb-3 fontuser">
+								<label for="inputnom">Nom
+									<span>*</span>
+								</label>
+								<i class="fa-solid fa-user"></i>
+								<input type="text" name="nom" id="inputnom" class="form-control" placeholder="Nom de famille" required>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="mb-3 fontuser">
+								<label for="inputEmail">Adresse Mail
+									<span>*</span>
+								</label>
+								<i class="fa-solid fa-envelope"></i>
+								<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Prenom@exemple.com" required>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="mb-3 fontuser">
+								<label for="inputPassword">Mot de passe
+									<span>*</span>
+								</label>
+								<i class="fa-solid fa-key"></i>
+								<input type="password" name="password" id="inputPassword" class="form-control" placeholder="************" required>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="mb-3 fontuser">
+								<label for="inputAdresse">Adresse
+									<span>*</span>
+								</label>
+								<i class="fa-solid fa-location-dot"></i>
+								<input type="text" name="adresse" id="inputAdresse" class="form-control" placeholder="Domicile" required>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="mb-3 fontuser">
+								<label for="inputtelephone">Téléphone
+									<span>*</span>
+								</label>
+								<i class="fa-solid fa-phone"></i>
+								<input type="text" name="telephone" id="inputTelephone" class="form-control" placeholder="+221 778000000" required>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-md-3">
+							<div class="mb-3 fontuser">
+								<label for="inputAdresse">Mois de naissance
+									<span>*</span>
+								</label>
+								<i class="fa-solid fa-calendar-days"></i>
+								<select required name="moisnaissance" id="" class="form-control">
+									<option required selected>-- Aucun --</option>
+									<option name="Janvier" value="Janvier">Janvier</option>
+									<option name="Février" value="Février">Février</option>
+									<option name="Mars" value="Mars">Mars</option>
+									<option name="Avril" value="Avril">Avril</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="mb-3 fontuser">
+								<label for="inputtelephone">Année de naissance
+									<span>*</span>
+								</label>
+								<i class="fa-solid fa-calendar-days"></i>
+								<select required name="anneenaissance" id="" class="form-control">
+									<option required selected>-- Aucun --</option>
+									<option name="2000" value="2000">2000</option>
+									<option name="2001" value="2001">2001</option>
+									<option name="2002" value="2002">2002</option>
+									<option name="2003" value="2003">2003</option>
+								</select>
+								</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="col-md-6">
+						<label class="my-3" for="inputtelephone">Sexe
+							<span>*</span>
+						</label>
+						<div class="mb-3">
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="sexe" id="inlineRadio1" value="Masculin" required>
+								<label class="form-check-label" for="inlineRadio1">Masculin</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="sexe" id="inlineRadio2" value="Feminin">
+								<label class="form-check-label" for="inlineRadio2">Féminin</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="form-check">
+						<input class="form-check-input" name="checkcgu" type="checkbox" value="c1" id="ck1" required>
+						<label class="form-check-label" for="ck1">
+							<span>*</span>
+							Accepter les conditions générales d'utilisation
+						</label>
+					</div>
+				</div>
+
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="form-floating">
+								<button class="btn btn-outline-success submit_btn w-80 my-4" type="submit">
+									INSCRIPTION
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="fw-normal fs-18 text-muted text-center">
+					Vous avez un compte?
+					<a href="{{path('app_login')}}" class="text-success fw-bold text-decoration-none">Connectez-vous</a>
+				</div>
+			</form>
+		</div>
+	</section>
+
+	<script>
+		inputDate.min = new Date().toISOString().split("T")[0];
+	</script>
+{% endblock %}

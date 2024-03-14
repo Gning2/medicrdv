@@ -1,0 +1,258 @@
+{% extends 'headerallpatient.html.twig' %}
+
+{% block title %}Rendez-vous
+{% endblock %}
+{% block stylesheets%}
+	<style>
+		body {
+			background-image: url({{asset('images/hero-bg.png')}});
+			background-size: cover;
+			background-attachment: fixed;
+			min-height: 100%;
+		}
+		.wrapper .logo img {
+			max-width: 25%;
+		}
+		.wrapper input:focus {
+			box-shadow: none;
+			border-color: #1fab89;
+		}
+		.fontuser input , select {
+			padding-left: 35px !important;
+		}
+		.wrapper select:focus {
+			box-shadow: none;
+			border-color: #1fab89;
+		}
+		.wrapper textarea:focus {
+			box-shadow: none;
+			border-color: #1fab89;
+		}
+		.wrapper .submit_btn {
+			padding: 15px;
+			font-weight: 500;
+		}
+		.wrapper .submit_btn:focus {
+			box-shadow: none;
+		}
+		#container2 {
+			width: 75%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		label span {
+			color: red;
+			font-size: 18px;
+		}
+		#formm {
+			position: absolute;
+			margin-top: 80px;
+			width: 75%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		.fontuser {
+			position: relative;
+		}
+
+		.fontuser i {
+			position: absolute;
+			left: 12px;
+			top: 38px;
+			color: gray;
+		}
+		 {# input,
+			select {
+				height: 47px !important;
+			}
+			.form-floating > label {
+				padding-top: 9px !important;
+			}
+			select {
+				padding-top: 18px !important;
+				padding-bottom: 0 !important;
+			} #}
+		
+	</style>
+{% endblock %}
+{% block body %}
+	<section class="wrapper">
+		<div id="container2" class="col-sm-8  col-lg-9 col-xl-5">
+			<form method="post" action="{{ path('app_recapitulatif') }}" id="formm" class="rounded bg-white shadow py-5 px-5">
+
+				<h3 class="text-dark fw-bolder fs-2 mb-4">Prenez votre rendez-vous</h3>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="mb-3 fontuser">
+								<label for="inputprenom">Prenom
+									<span>*</span>
+								</label>
+								<i class="fa-solid fa-user"></i>
+								<input type="text" name="prenom_patient" id="inputprenom" class="form-control" placeholder="Prenom" required>
+
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="mb-4 fontuser">
+								<label for="inputnom">Nom
+									<span>*</span>
+								</label>
+								<i class="fa-solid fa-user"></i>
+								<input type="text" name="nom_patient" id="inputnom" class="form-control" placeholder="Nom de famille" required>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="mb-3 fontuser">
+								<label for="inputEmail">Adresse Mail
+									<span>*</span>
+								</label>
+								<i class="fa-solid fa-envelope"></i>
+								<input type="email" name="email_patient" id="inputEmail" class="form-control" placeholder="Prenom@exemple.com" required>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="mb-3 fontuser">
+								<label for="inputtelephone">Téléphone
+									<span>*</span>
+								</label>
+								<i class="fa-solid fa-phone"></i>
+								<input type="text" name="num_tel" id="inputtelephone" class="form-control" placeholder="+221 778000000" required>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+						<div class="mb-4 fontuser">
+							<label for="inputAdresse">Adresse
+								<span>*</span>
+							</label>
+							<i class="fa-solid fa-location-dot"></i>
+							<input type="text" name="adresse" id="inputAdresse" class="form-control" placeholder="Domicile" required>
+						</div>
+						</div>
+						<div class="col-md-6">
+						<div class="mb-4 fontuser">
+							<label for="inputJour">Age
+								<span>*</span>
+							</label>
+							<i class="fa-solid fa-calendar"></i>
+							<input type="text" name="age" id="inputAge" class="form-control" placeholder="Age" required>
+						</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row justify-content-md-left">
+						
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+					<div class="col-md-6">
+						<label class="" for="inputtelephone">Sexe
+							<span>*</span>
+							{# <i class="fa-solid fa-chevron-down"></i> #}
+						</label>
+						<div class="my-2">
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="sexe" id="inlineRadio1" value="Homme">
+								<label class="form-check-label" for="inlineRadio1">Homme</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="sexe" id="inlineRadio2" value="Femme">
+								<label class="form-check-label" for="inlineRadio2">Femme</label>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="mb-4 fontuser">
+							<label for="inputAdresse">Service
+								<span>*</span>
+							</label>
+							<i class="fa-solid fa-hospital-user"></i>
+							<select required name="service" id="service" class="form-control">
+								<option required selected>Services...</option>
+								<option name="Bloc_operatoire" value="Bloc_operatoire">Bloc opératoire</option>
+								<option name="Cardiologue" value="Cardiologue">Cardiologie</option>
+								<option name="Chirurgien" value="Chirurgien">Chirurgie</option>
+								<option name="Dentiste" value="Dentiste">Dentiste</option>
+								<option name="Dermatologue" value="Dermatologue">Dermatologie</option>
+								<option name="Echographe" value="Echographe">Echographie</option>
+								<option name="Immunologue" value="Immunologue">Immunologie</option>
+								<option name="Kinesitherapeute" value="Kinesitherapeute">Kinésithérapie</option>
+								<option name="Sage_femme" value="Sage_Femme">Maternité</option>
+								<option name="Neurologue" value="Neurologue">Neurologie</option>
+								<option name="Odontologue" value="Odontologue">Odontologie</option>
+								<option name="Pneumologue" value="Pneumologue">Pneumologie</option>
+								<option name="Radiologue" value="Radiologue">Radiologie</option>
+							</select>
+						</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="mb-3">
+								<label for="inputprenom">Date rendez-vous
+									<span>*</span>
+								</label>
+								<input min="" type="date" name="date_rdv" id="inputDate" class="form-control" required>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="mb-4">
+								<label for="inputnom">Heure rendez-vous
+									<span>*</span>
+								</label>
+								<input type="time" min="08:00" max="19:00" name="heure_res" id="inputTime" class="form-control" required>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="container">
+					<div class="row justify-content-md-left">
+						<div class="form-group mb-3">
+							<label for="exampleFormControlTextarea1">Motif <span>*</span> (Le pourquoi du rendez-vous)
+							
+							</label>
+							<textarea name="motif" class="form-control" id="exampleFormControlTextarea1" rows="4" maxlength='200' placeholder="0-200 caractères" required></textarea>
+						</div>
+					</div>
+				</div>
+
+				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="form-floating">
+								<button class="btn btn-outline-success submit_btn w-80 my-5" type="submit">
+									Envoyer
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</section>
+
+	<script> inputDate.min = new Date().toISOString().split("T")[0];
+
+</script>
+{% endblock %}

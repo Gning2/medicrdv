@@ -1,0 +1,92 @@
+{% extends 'headerbefore.html.twig' %}
+
+{% block title %}Connexion
+{% endblock %}
+{% block stylesheets%}
+	<style>
+		body {
+			background-image: url({{asset('images/bg.jpg')}});
+			background-size: cover;
+			background-attachment: fixed;
+			min-height: 100%;
+		}
+		.wrapper .logo img {
+			max-width: 30%;
+		}
+		.wrapper input:focus {
+			box-shadow: none;
+			border-color: #1fab89;
+		}
+		.wrapper .submit_btn {
+			padding: 15px;
+			font-weight: 500;
+		}
+		.wrapper .submit_btn:focus {
+			box-shadow: none;
+		}
+		#container2 {
+			width: 45%;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		#formm {
+			position: absolute;
+			margin-top: 80px;
+			width: 45%;
+		}
+	</style>
+{% endblock %}
+{% block body %}
+	<section class="wrapper">
+		<div id="container2" class="text-center">
+			{# <div class="logo">
+			            <img src="" alt="logo" class="img-fluid">
+			        </div> #}
+			<form method="post" id="formm" class="rounded bg-white shadow p-5">
+				{% if error %}
+					<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+				{% endif %}
+
+				{% if app.user %}
+					<div class="mb-3">
+						You are logged in as
+						{{ app.user.userIdentifier }},
+						<a href="{{ path('app_logout') }}">Logout</a>
+					</div>
+				{% endif %}
+				<h3 class="text-dark fw-bolder fs-4 mb-2">Accédez à votre compte</h3>
+				<div class="fw-normal text-muted mb-4">
+					Vous êtes nouveau?
+					<a href="{{path('app_registerss')}}" class="text-success fw-bold text-decoration-none">Inscrivez-vous</a>
+				</div>
+				<div class="form-floating mb-3">
+					<input type="email" name="email" id="inputEmail" class="form-control" required>
+					<label for="inputEmail">Adresse Mail</label>
+				</div>
+				<div class="form-floating">
+					<input type="password" name="password" id="inputPassword" class="form-control" required>
+					<label for="inputPassword">Mot de passe</label>
+				</div>
+				<input
+				type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+				{#
+				        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+				        See https://symfony.com/doc/current/security/remember_me.html
+				
+				        <div class="checkbox mb-3">
+				            <label>
+				                <input type="checkbox" name="_remember_me"> Remember me
+				            </label>
+				        </div>
+				    #}
+				<div class="mt-2 text-end">
+					<a href="{{path('forgotten_password')}}" class="text-success fw-bold text-decoration-none">Mot de passe oublié?</a>
+				</div>
+				<button class="btn btn-outline-success submit_btn w-100 my-4" type="submit">
+					Se connecter
+				</button>
+			</form>
+		</div>
+	</section>
+{% endblock %}

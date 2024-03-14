@@ -1,0 +1,220 @@
+{% extends 'headerconnexion.html.twig' %}
+
+{% block head %}
+
+	<head></head>
+{% endblock %}
+{% block stylesheets %}
+<style>
+#buttonhomeac{
+	background-color: transparent;
+	border-color:white;
+}
+#buttonhomeac:hover{
+	background-color: white;
+	border-color:white;
+	color:black;
+}
+</style>
+{% endblock %}
+{% block body %}
+
+	<body>
+
+		<div id="id_hero_area" class="hero_area">
+
+			<div class="hero_bg_box">
+				<img src="{{asset('images/hero-bg.png')}}" alt="">
+			</div>
+
+			<!-- header section strats -->
+
+			<!-- end header section -->
+			<!-- slider section -->
+				<section class="slider_section "> <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<div class="container ">
+								<div class="row">
+									<div class="col-md-7">
+										<div class="detail-box">
+											<h1>
+												Bienvenue
+											</h1>
+											<p>Dans votre epace de santé, ici vous trouverez des médecins qualifiés, compétents, et disponibles, qui
+													seront favorable à toutes vos attentes. Merci de prendre un rendez-vous chez nous
+											</p>
+											<div class="form-floating">
+												<a href="/rendez-vous" id="buttonhomeac" type="button" class="btn btn-success submit_btn w-80 my-4 btn-lg">Prendre rendez-vous</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</section>
+			<!-- end slider section -->
+		</div>
+
+
+		<!-- contact section -->
+		<section id="contacter-nous" class="contact_section layout_padding">
+			<div class="container">
+				<div class="heading_container">
+					<h2>
+						Contacter-nous
+					</h2>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form_container contact-form">
+							<form action="">
+								<div class="form-row">
+									<div class="col-lg-6">
+										<div>
+											<input type="text" placeholder="Nom complet"/>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div>
+											<input type="text" placeholder="Téléphone"/>
+										</div>
+									</div>
+								</div>
+								<div>
+									<input type="email" placeholder="Adresse mail"/>
+								</div>
+								<div>
+									<input type="text" class="message-box" placeholder="Message"/>
+								</div>
+								<div class="btn_box">
+									<button>
+										Envoyer
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="map_container">
+							    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.972075365796!2d-17.396095385157718!3d14.770603089694411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec10c85ac8c287f%3A0xe65ba8869dd5fcd3!2sClinique%20Cheikh%20Mouhamadoul%20Bachir%20Mbacke!5e0!3m2!1sfr!2ssn!4v1666001678711!5m2!1sfr!2ssn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- end contact section -->
+
+
+		<!-- footer section -->
+		<footer class="footer_section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-lg-3 footer_col">
+						<div class="footer_contact">
+							<h4>
+								Joignable sur ..
+							</h4>
+							<div class="contact_link_box">
+								<a href="">
+									<i class="fa fa-map-marker" aria-hidden="true"></i>
+									<span>
+										Localisation
+									</span>
+								</a>
+								<a href="">
+									<i class="fa fa-phone" aria-hidden="true"></i>
+									<span>
+										Appel +221 776154007
+									</span>
+								</a>
+								<a href="">
+									<i class="fa fa-envelope" aria-hidden="true"></i>
+									<span>
+										papagning4@gmail.com
+									</span>
+								</a>
+							</div>
+						</div>
+						<div class="footer_social">
+							<a href="">
+								<i class="fa fa-facebook" aria-hidden="true"></i>
+							</a>
+							<a href="">
+								<i class="fa fa-twitter" aria-hidden="true"></i>
+							</a>
+							<a href="">
+								<i class="fa fa-linkedin" aria-hidden="true"></i>
+							</a>
+							<a href="">
+								<i class="fa fa-instagram" aria-hidden="true"></i>
+							</a>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3 footer_col">
+						<div class="footer_detail">
+							<h4>
+								A Propos
+							</h4>
+							<p>
+								Beatae provident nobis mollitia magnam voluptatum, unde dicta facilis minima veniam corporis laudantium alias tenetur eveniet illum reprehenderit fugit a delectus officiis blanditiis ea.
+							</p>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-2 mx-auto footer_col">
+						<div class="footer_link_box">
+							<h4>
+								Links
+							</h4>
+							<div class="footer_links">
+								<a class="active" href="/home">
+									Accueil
+								</a>
+								<a class="" href="#">
+									A propos
+								</a>
+								<a class="" href="#">
+									Départments
+								</a>
+								<a class="" href="#">
+									Médecins
+								</a>
+								<a class="" href="#contacter-nous">
+									Contacter-nous
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-info">
+					<p>
+						&copy;
+						<span id="displayYear"></span>
+						All Rights Reserved By
+						<a href="#">Qualify</a>
+					</p>
+				</div>
+			</div>
+		</footer>
+		<!-- footer section -->
+
+
+		<!-- jQery -->
+		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+		<!-- popper js -->
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<!-- bootstrap js -->
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<!-- owl slider -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+		<!-- custom js -->
+		<script type="text/javascript" src="js/custom.js"></script>
+		<!-- Google Map -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+		<!-- End Google Map -->
+
+	</body>
+{% endblock %}

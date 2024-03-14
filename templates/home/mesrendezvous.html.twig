@@ -1,0 +1,105 @@
+{% extends 'headerconnexion.html.twig' %}
+
+{% block title %}Rendez-vous du patient {{app.user.prenom}} {{app.user.nom}}
+{% endblock %}
+{% block stylesheets%}
+    <style>
+        body {
+            background-image: url({{asset('images/hero-bg.png')}});
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100%;
+        }
+        #container2 {
+            width: 75%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #formm {
+            position: absolute;
+            margin-top: 80px;
+            width: 75%;
+        }
+        
+        .form-control{
+            margin-bottom: 10px;
+        }
+        .form-control:focus{
+            box-shadow : none !important;
+            border-color: #22a853 !important;
+        }
+        .page-item.active .page-link{
+            background-color: #1fab89 !important;
+            border-color: #1fab89 !important;
+            color: #fff !important;
+        }
+        .page-link{
+            color:#1fab89 !important;
+        }
+        .page-link:focus{
+            box-shadow:none !important;
+        }
+        .page-item.disabled .page-link{
+            color:#6c757d !important;
+        }
+        .btn.btn-outline-success:focus,
+        .btn.btn-outline-danger:focus{
+            box:shadow:none !important;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<body>
+    <section class="wrapper">
+        <div id="container2" class="text-center">
+            <div  id="formm" class="rounded bg-white shadow p-5">
+                <div class="container mb-2">
+                    {{ form_start(form) }}
+                        <div class="d-flex flex-row">
+                            <div class="p-2">
+                                {{ form_row(form.service,{'attr':{'class':'form-control'}})}}
+                            </div>
+                            <div class="p-2">
+                                <button class="btn btn-success">Rechercher par service</button>
+                            </div>
+                            <div class="p-2">
+                               <a href="{{path('app_mesrendezvous')}}" class="btn btn-outline-danger">Effacer</a>
+                            </div>
+                        </div>
+                    {{ form_end(form) }}
+                </div>
+                <table id="example" class="table table-striped table-bordered table-sm" cellspacing="0" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Date RDV</th>
+                            <th>Heure RDV</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for reservation in reservations %}
+                        <tr>
+                            <td>{{reservation.service}}</td>
+                            <td>{{reservation.date_rdv}}</td>
+                            <td>{{reservation.heure_res}}</td>
+                            <td>{{reservation.status}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                   
+                </table>
+                <div class="content-panel-footer without-padding without-border d-flex justify-content-between">
+                    <div class="list-pagination-counter">
+                        <strong>{{reservations.getTotalItemCount}}</strong> rendez-vous
+                    </div>
+                    <div class="list-pagination">
+                        <nav class="pager list-pagination-paginator first-page last-page">
+                          {{knp_pagination_render(reservations,"base/pagination.html.twig")}}                
+                        </nav>
+                    </div>
+                </div>
+            </div>
+    </section>
+</body>
+{% endblock %}

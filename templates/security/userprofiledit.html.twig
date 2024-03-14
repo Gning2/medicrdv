@@ -1,0 +1,155 @@
+{% extends 'headerconnexion.html.twig'%}
+{% block title %}Modification du profil du patient
+	{{app.user.prenom}}
+	{{app.user.nom}}
+{% endblock %}
+{% block stylesheets%}
+	<style>
+		body {
+			margin: 0;
+			color: #2e323c;
+			position: relative;
+			height: 100%;
+			background-image: url({{asset('images/hero-bg.png')}});
+		}
+		.account-settings .user-profile {
+			margin: 0 0 1rem;
+			padding-bottom: 1rem;
+			text-align: center;
+		}
+		.account-settings .user-profile .user-avatar {
+			margin: 0 0 1rem;
+		}
+		.account-settings .user-profile .user-avatar img {
+			width: 90px;
+			height: 90px;
+			-webkit-border-radius: 100px;
+			-moz-border-radius: 100px;
+			border-radius: 100px;
+		}
+		.account-settings .user-profile h5.user-name {
+			margin: 0 0 0.5rem;
+		}
+		.account-settings .user-profile h6.user-email {
+			margin: 0;
+			font-size: 0.8rem;
+			font-weight: 400;
+			color: #9fa8b9;
+		}
+		.account-settings .about {
+			margin: 2rem 0 0;
+			text-align: center;
+		}
+		.account-settings .about h5 {
+			margin: 0 0 15px;
+			color: #007ae1;
+		}
+		.account-settings .about p {
+			font-size: 0.825rem;
+		}
+		.form-control {
+			border: 1px solid #cfd1d8;
+			-webkit-border-radius: 2px;
+			-moz-border-radius: 2px;
+			border-radius: 2px;
+			font-size: 0.825rem;
+			background: #ffffff;
+			color: #2e323c;
+			margin-bottom: 25px;
+			width: 350px;
+		}
+
+		.card {
+			background: #ffffff;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+			border: 0;
+			margin-bottom: 1rem;
+		}
+		.mb-2 {
+			display: flex;
+			flex-direction: row;
+			width: 100% !important;
+			justify-content: space-between;
+		}
+		.form-group {
+			width: 100%;
+		}
+		.form-group input:focus{
+			box-shadow: none;
+			border-color: #1fab89;
+		}
+		#formm{
+			position: relative;
+			top:80px;
+			}
+	</style>
+{% endblock %}
+{% block body %}
+	<div id="formm" class="container">
+		<div class="row gutters">
+			<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+				<div class="card h-100">
+					<div class="card-body">
+						<div class="account-settings">
+							<div class="user-profile">
+								<div class="user-avatar">
+									<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
+								</div>
+								<h5 class="user-name">{{app.user.nom}}</h5>
+								<h6 class="user-email">{{app.user.email}}</h6>
+							</div>
+							<div class="about">
+								<h5>A propos</h5>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+				<div class="card h-100">
+					<div class="card-body">
+						<div class="row gutters">
+							{{form_start(form, {'attr': {'class': 'inline'}}) }}
+							<div class="col-lg-6 col-md-6 col-sm-6 col-12 mb-2">
+								<div class="form-group mx-3">
+									<label for="fullName">{{form_label(form.prenom)}}</label>
+									{{form_widget(form.prenom, {'attr': {'class': 'form-control'}})}}
+								</div>
+								<div class="form-group mx-3">
+									<label for="Name">{{form_label(form.nom)}}</label>
+									{{form_widget(form.nom, {'attr': {'class': 'form-control'}})}}
+								</div>
+							</div>
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-2">
+								<div class="form-group mx-3">
+									<label for="phone">{{form_label(form.telephone)}}</label>
+									{{form_widget(form.telephone, {'attr': {'class': 'form-control'}})}}
+								</div>
+								<div class="form-group mx-3">
+									<label for="adresse">{{form_label(form.adresse)}}</label>
+									{{form_widget(form.adresse, {'attr': {'class': 'form-control'}})}}
+								</div>
+							</div>
+
+							<div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 mb-2">
+								<div class="form-group mx-3">
+									<label for="datenaiss">Mois de naissance</label>
+									{{form_widget(form.moisnaissance, {'attr': {'class': 'form-control'}})}}
+								</div>
+								<div class="form-group mx-3">
+									<label for="datenaiss">Année de naissance</label>
+									{{form_widget(form.anneenaissance, {'attr': {'class': 'form-control'}})}}
+								</div>
+							</div>
+							 <button type="submit" class="btn btn-outline-success">Valider</button>
+                    <a href="{{ path('app_patient_profil') }}" class="btn btn-outline-danger">Retour</a>
+							{{form_end(form)}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

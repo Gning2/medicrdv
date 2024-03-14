@@ -1,0 +1,202 @@
+{% extends 'headerbefore.html.twig' %}
+
+{% block head %}
+	<head></head>
+{% endblock %}
+{% block body %}
+
+	<body>
+
+		<div class="hero_area">
+
+			<div class="hero_bg_box">
+				<img src="{{asset('images/hero-bg.png')}}" alt="">
+			</div>
+
+			<!-- header section strats -->
+
+			<!-- end header section -->
+			<!-- slider section -->
+				<section class="slider_section "> <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+					<div class="carousel-inner">
+						<div class="carousel-item active">
+							<div class="container ">
+								<div class="row">
+									<div class="col-md-7">
+										<div class="detail-box">
+											<h1>
+												Bienvenue
+											</h1>
+											<p>Durant notre compagnonnage que nous souhaitons bénéfiques pour vous et pour les êtres qui vous sont chers, vous trouverez des agents compétents, dévoués, disponibles, pour des réponses et des soins efficaces.
+											</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</section>
+			<!-- end slider section -->
+		</div>
+
+
+		<!-- contact section -->
+		<section class="contact_section layout_padding">
+			<div class="container">
+				<div class="heading_container">
+					<h2>
+						Get In Touch
+					</h2>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form_container contact-form">
+							<form action="">
+								<div class="form-row">
+									<div class="col-lg-6">
+										<div>
+											<input type="text" placeholder="Your Name"/>
+										</div>
+									</div>
+									<div class="col-lg-6">
+										<div>
+											<input type="text" placeholder="Phone Number"/>
+										</div>
+									</div>
+								</div>
+								<div>
+									<input type="email" placeholder="Email"/>
+								</div>
+								<div>
+									<input type="text" class="message-box" placeholder="Message"/>
+								</div>
+								<div class="btn_box">
+									<button>
+										SEND
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="map_container">
+							    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3857.972075365796!2d-17.396095385157718!3d14.770603089694411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec10c85ac8c287f%3A0xe65ba8869dd5fcd3!2sClinique%20Cheikh%20Mouhamadoul%20Bachir%20Mbacke!5e0!3m2!1sfr!2ssn!4v1666001678711!5m2!1sfr!2ssn" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- end contact section -->
+
+
+		<!-- footer section -->
+		<footer class="footer_section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-lg-3 footer_col">
+						<div class="footer_contact">
+							<h4>
+								Reach at..
+							</h4>
+							<div class="contact_link_box">
+								<a href="">
+									<i class="fa fa-map-marker" aria-hidden="true"></i>
+									<span>
+										Location
+									</span>
+								</a>
+								<a href="">
+									<i class="fa fa-phone" aria-hidden="true"></i>
+									<span>
+										Call +01 1234567890
+									</span>
+								</a>
+								<a href="">
+									<i class="fa fa-envelope" aria-hidden="true"></i>
+									<span>
+										demo@gmail.com
+									</span>
+								</a>
+							</div>
+						</div>
+						<div class="footer_social">
+							<a href="">
+								<i class="fa fa-facebook" aria-hidden="true"></i>
+							</a>
+							<a href="">
+								<i class="fa fa-twitter" aria-hidden="true"></i>
+							</a>
+							<a href="">
+								<i class="fa fa-linkedin" aria-hidden="true"></i>
+							</a>
+							<a href="">
+								<i class="fa fa-instagram" aria-hidden="true"></i>
+							</a>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-3 footer_col">
+						<div class="footer_detail">
+							<h4>
+								About
+							</h4>
+							<p>
+								Beatae provident nobis mollitia magnam voluptatum, unde dicta facilis minima veniam corporis laudantium alias tenetur eveniet illum reprehenderit fugit a delectus officiis blanditiis ea.
+							</p>
+						</div>
+					</div>
+					<div class="col-md-6 col-lg-2 mx-auto footer_col">
+						<div class="footer_link_box">
+							<h4>
+								Links
+							</h4>
+							<div class="footer_links">
+								<a class="active" href="index.html">
+									Home
+								</a>
+								<a class="" href="about.html">
+									About
+								</a>
+								<a class="" href="departments.html">
+									Departments
+								</a>
+								<a class="" href="doctors.html">
+									Doctors
+								</a>
+								<a class="" href="contact.html">
+									Contact Us
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="footer-info">
+					<p>
+						&copy;
+						<span id="displayYear"></span>
+						All Rights Reserved By
+						<a href="https://html.design/">Free Html Templates</a>
+					</p>
+				</div>
+			</div>
+		</footer>
+		<!-- footer section -->
+
+
+		<!-- jQery -->
+		<script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+		<!-- popper js -->
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<!-- bootstrap js -->
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<!-- owl slider -->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+		<!-- custom js -->
+		<script type="text/javascript" src="js/custom.js"></script>
+		<!-- Google Map -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+		<!-- End Google Map -->
+
+	</body>
+{% endblock %}

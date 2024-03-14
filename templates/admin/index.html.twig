@@ -1,0 +1,258 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Médecin
+{% endblock %}
+
+{% block body %}
+
+	<body>
+		<!-- SIDEBAR -->
+		<section id="sidebar">
+			<a href="#" class="brand"></a>
+			<ul class="side-menu top">
+				<li class="active">
+					<a href="{{path('app_neurologie')}}">
+						<i class='bx bxs-calendar-check'></i>
+						<span class="text">Mes rendez-vous</span>
+					</a>
+				</li>
+				<li>
+					<a href="{{path('app_horaire')}}">
+						<i class='bx bxs-time'></i>
+						<span class="text">Horaire</span>
+					</a>
+				</li>
+			</ul>
+			<ul id="side-menuid" class="side-menu">
+				<li>
+					<a href="{{path('app_logout')}}" class="logout">
+						<i class='bx bxs-log-out-circle'></i>
+						<span class="text">Déconnexion</span>
+					</a>
+				</li>
+			</ul>
+		</section>
+		<!-- SIDEBAR -->
+
+		<!-- CONTENT -->
+		<section
+			id="content">
+			<!-- NAVBAR -->
+			<nav>
+				<i class='bx bx-menu'></i>
+				<form action="#">
+					<div class="form-input">
+						<input type="search" placeholder="Search...">
+						<button type="submit" class="search-btn">
+							<i class='bx bx-search'></i>
+						</button>
+					</div>
+				</form>
+
+				<i class='bx bx-sun'></i><input type="checkbox" id="switch-mode" hidden>
+				<label for="switch-mode" class="switch-mode"></label>
+				<i class='bx bx-moon'></i>
+
+				<a href="#" class="profile">
+					<img src="{{asset('images/people.png')}}">
+				</a>
+			</nav>
+			<!-- NAVBAR -->
+
+			<!-- MAIN -->
+			<main>
+				<div class="head-title">
+					<div class="left">
+						<h1>Mes rendez-vous</h1>
+					</div>
+					<div class="right">
+						<a href="{{path('rendez-vous_app')}}" class="btn btn-outline-success">
+							<i class='bx bx-plus-circle'></i>
+							Créer nouveau rendez-vous</a>
+					</div>
+				</div>
+
+				<ul class="box-info">
+					<li>
+						<i class='bx bxs-calendar-check'></i>
+						<span class="text">
+							<h3>{{RdvCompteurs|number_format}}</h3>
+							<p>Total rendez-vous</p>
+						</span>
+					</li>
+					<li>
+						<i class='bx bxs-calendar-check'></i>
+						<span class="text">
+							<h3>{{CompteurByDate|number_format}}</h3>
+							<p>Rendez-vous du jour</p>
+						</span>
+					</li>
+					<li>
+						<i class='bx bxs-calendar-check'></i>
+						<span class="text">
+							<h3>{{CompteurByStatus|number_format}}</h3>
+							<p>Rendez-vous à venir</p>
+						</span>
+					</li>
+				</ul>
+				<div class="table-data">
+					<div class="order">
+						<div class="head">
+							<h3>Rendez-vous</h3>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<th>NOM</th>
+									<th>PRENOM</th>
+									<th>TELEPHONE</th>
+									<th class="text-center">STATUS</th>
+									<th class="text-center">ACTION</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for rendezvous in reservations %}
+									<tr>
+										<td onclick="myFunction( {{rendezvous.id}})" id="myBtn{{rendezvous.id}}">
+											{{rendezvous.nom_patient}}
+										</td>
+										<td onclick="myFunction( {{rendezvous.id}})" id="myBtn{{rendezvous.id}}">
+											{{rendezvous.prenom_patient}}
+										</td>
+										<td onclick="myFunction( {{rendezvous.id}})" id="myBtn{{rendezvous.id}}">
+											{{rendezvous.num_tel}}
+										</td>
+										<td onclick="myFunction( {{rendezvous.id}})" id="myBtn{{rendezvous.id}}" class="text-center">
+											
+											{% if rendezvous.status == 'Terminer' %}
+												<span class="status terminer">{{rendezvous.status}}</span>
+											{% endif %}
+											{% if rendezvous.status == 'En Cours' %}
+												<span class="status encour">{{rendezvous.status}}</span>
+											{% endif %}
+											{% if rendezvous.status == 'A Venir' %}
+												<span class="status avenir">{{rendezvous.status}}</span>
+											{% endif %}
+										</td>
+										<td>
+											<div style="margin-right:0px !important;" id="dropdownid" class="dropdown mx-4">
+												<a class="btn btn-outline-success dropdown-toggle" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+												<ul id="dropdown-menuid" class="dropdown-menu">
+													<li>
+														<a class="dropdown-item text-dark" href="/medecin/Neurologie/encours/{{rendezvous.id}}" data-action-name="en cours ">
+															<span class="action-label">En cours</span>
+														</a>
+													</li>
+													<li>
+														<a class="dropdown-item text-dark" href="/medecin/neurologie/terminer/{{rendezvous.id}}" data-action-name="terminer">
+															<span class="action-label">Terminer</span>
+														</a>
+													</li>
+												</ul>
+											</div>
+										</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+									
+						<div class="content-panel-footer without-padding without-border">
+							<div class="list-pagination">
+								<div class="list-pagination-counter">
+									<nav style="z-index:1;" class="pager list-pagination-paginator first-page last-page my-4">
+										<strong class="text-center">{{reservations.getTotalItemCount}}</strong>
+										résultats
+										{{knp_pagination_render(reservations,"base/pagination.html.twig")}}
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="todo">
+						<div class="head">
+							<h3>Détails rendez-vous</h3>
+						</div>
+						<div id="moreInfo" class="InfoRdv"></div>
+					</div>
+				</div>
+			</main>
+		</section>
+	</body>
+
+
+	<!-- MAIN -->
+
+
+	<!-- CONTENT -->
+
+	<script>
+		const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
+allSideMenu.forEach(item => {
+const li = item.parentElement;
+item.addEventListener('click', function () {
+allSideMenu.forEach(i => {
+i.parentElement.classList.remove('active');
+})
+li.classList.add('active');
+})
+});
+
+// TOGGLE SIDEBAR
+const menuBar = document.querySelector('#content nav .bx.bx-menu');
+const sidebar = document.getElementById('sidebar');
+menuBar.addEventListener('click', function () {
+sidebar.classList.toggle('hide');
+})
+
+const searchButton = document.querySelector('#content nav form .form-input button');
+const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
+const searchForm = document.querySelector('#content nav form');
+
+searchButton.addEventListener('click', function (e) {
+if (window.innerWidth < 576) {
+e.preventDefault();
+searchForm.classList.toggle('show');
+if (searchForm.classList.contains('show')) {
+searchButtonIcon.classList.replace('bx-search', 'bx-x');
+} else {
+searchButtonIcon.classList.replace('bx-x', 'bx-search');
+}
+}
+})
+
+if (window.innerWidth < 768) {
+sidebar.classList.add('hide');
+} else if (window.innerWidth > 576) {
+searchButtonIcon.classList.replace('bx-x', 'bx-search');
+searchForm.classList.remove('show');
+}
+
+
+window.addEventListener('resize', function () {
+if (this.innerWidth > 576) {
+searchButtonIcon.classList.replace('bx-x', 'bx-search');
+searchForm.classList.remove('show');
+}
+})
+
+
+const switchMode = document.getElementById('switch-mode');
+
+switchMode.addEventListener('change', function () {
+if (this.checked) {
+document.body.classList.add('dark');
+} else {
+document.body.classList.remove('dark');
+}
+})
+
+function myFunction(idButton) {
+var el = document.getElementById('myBtn' + idButton);
+console.log("bouton clicker")
+$.get('/medecin/' + idButton, (data) => {
+console.log(data)
+$('#moreInfo').html("<li><b>Numero Référence:</b>  " + data.numRef + "</li>" + "<li><b>Prenom:</b>  " + data.prenom + "</li>" + "<li><b>Nom:</b>  " + data.nom + "</li>" + "<li><b>Email:</b>  " + data.email + "</li>" + "<li><b>Téléphone:</b>  " + data.numTel + "</li>" + "<li><b>Adresse:</b>  " + data.adresse + "</li>" + "<li><b>Service:</b>  " + data.service + "</li>" + "<li><b>Age:</b>  " + data.age + "</li>" + "<li><b>Date:</b>  " + data.dateRdv + "</li>" + "<li><b>Heure:</b>  " + data.heureRes + "</li>" + "<li><b>Status:</b>  " + data.status + "</li>")
+}, "json")
+}
+	</script>
+</body>{% endblock %}
